@@ -1,0 +1,127 @@
+{% extends "layout_user.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+    {% block head %}
+        {{ super() }}
+               
+               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
+               <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+               
+    {% endblock %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="{{url_for('book_user', formid=1)}}">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Book Your Car Now !!!</legend>
+
+                           <div class="form-group">
+                              {{ form.cartype.label(class="form-control-label") }}
+                                  {{ form.cartype(class="form-control form-control-lg") }}
+                          </div>
+                           
+                            <div class="form-group">
+                              {{ form.date_pickup.label(class="form-control-label") }}
+                                {% if form.date_pickup.errors %}
+                                    {{ form.date_pickup(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.date_pickup.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                {% else %}
+                                    {{ form.date_pickup(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                              {{ form.date_drop.label(class="form-control-label") }}
+                                {% if form.date_drop.errors %}
+                                    {{ form.date_drop(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.date_drop.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                {% else %}
+                                    {{ form.date_drop(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+
+
+                            <div class="form-group">
+                              {{ form.pickup_location.label(class="form-control-label") }}
+                                {{ form.pickup_location(class="form-control form-control-lg") }}
+                            </div>
+                          
+                            <div class="form-group">
+                                {{ form.submit(class="btn btn-outline-info") }}
+                            </div>
+             </fieldset>
+        </form>
+    {% if showform == "vehicles" %}
+        <legend class="border-bottom mb-4">Search Results !!!</legend>
+    <div class="content-section">
+        <h4><p> Choose your Vehicle:  </p></h4>
+                            <table class="table">
+                                <thead>
+                                    <tr style="color: purple; ">
+                                        <th> Vehicle ID </th>
+                                        <th> Vehicle Name </th>
+                                        <th> Vehicle Location </th>
+                                        <th> Vehicle Seat_capacity </th>
+                                        <th> Vehicle Type </th>
+                                        <th> Book Your Car </th>
+                                    </tr>
+                                </thead>
+
+        {% for result in results %}
+        <form method="POST" action="{{url_for('book_user', formid=2)}}">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group">
+                                <tbody>
+                                <input type="number" name="vehicle_id" value={{result[0].vehicle_id}}  hidden>
+                                    <tr>
+                                        <td>{{ result[0].vehicle_id }}</td>
+                                        <td>{{ result[0].vehicle_name }}</td>
+                                        <td>{{ result[1] }}</td>
+                                        <td>{{ result[0].seat_capacity }}</td>
+                                        <td>{{ result[0].vehicle_type }}</td>
+                                        <td>
+                                            {{ form.submitbook(class="btn btn-outline-info") }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                </div>
+             </fieldset>
+        </form>
+        {% endfor %}
+                            </table>
+    </div>
+    {% endif %}
+    </div>
+{% endblock content %}
+
+    {% block scripts %}
+          {{ super() }}
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.js"></script>
+
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!--   $('#datetimepicker2').datetimepicker({
+        format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'en'
+      });
+    </script> -->
+         
+    {% endblock %}
+
+
+
+
+
+

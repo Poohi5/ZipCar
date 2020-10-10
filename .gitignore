@@ -1,0 +1,11 @@
+/env
+.env
+.venv/
+.migrations/
+.__pycache__/
+*.pyo
+*.pyc
+.en/
+CarRentalServiceTeamPrecision.egg-info/
+venv/
+.DS_Store

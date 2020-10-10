@@ -1,0 +1,32 @@
+{% extends "layout_admin.html" %}
+{% block content %}
+    
+    <div class="row">
+         <div class="col-md-12">
+          <div class="content-section">
+              <a class="mr-2" href="#">TeamPrecision</a>
+
+            <h2><a class="article-title" href="#">Welcome To WanderingWheels !!!!</a></h2>
+
+            <p class="article-content">Admin can edit, delete and update location, vehicle and user details !!!</p>
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+         <div class="col-md-12">
+          <div class="content-section">
+            <div class="list-group">
+              <a href="{{url_for('addvehicledetails')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Add Vehicle</h5></a><br>
+              <a href="{{url_for('updatevehicledetails')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Update Vehicle Details</h5></a><br>
+              <a href="{{url_for('removevehicledetails')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Remove Vehicle</h5></a><br>
+              <a href="{{url_for('vehicleprice')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Set Price for Vehicles</h5></a><br>
+              <a href="{{url_for('rentallocation')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Add Location</h5></a><br>
+              <a href="{{url_for('editrentallocation')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Edit Location</h5></a><br>
+              <a href="{{url_for('removerentallocation')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Remove Location</h5></a><br>
+              <a href="{{url_for('deleteuser')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Delete User</h5></a><br>
+            </div>
+         </div>
+         </div>
+   </div>
+{% endblock content %}

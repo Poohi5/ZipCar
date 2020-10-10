@@ -1,0 +1,41 @@
+{% extends "layout_user.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+<!-- Can you this as profile page for user after login. To see membership plan and account verified or not -->
+    
+{% block content %} 
+<article class="media content-section">
+         <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#"> <h1> Welcome {{ current_user.username }} !!!! </h1></a>
+</div>
+<legend class="border-bottom mb-4">Follow below steps to help serve you better!!</legend>
+<div>
+<P class="article-content"> - Drivers can request a vehicle for a certain date and time to be picked up at a specific location. </P>
+</div>
+<div>
+<P class="article-content"> - Drivers can select one of the available vehicle types, for example, a regular car, a pickup truck, or a van.</P>
+</div>
+<div>
+<P class="article-content"> - If a requested car is not available at a desired location, drivers will able to see  if a similar car is available at an alternate location.</P>
+</div>
+<div>
+<P class="article-content"> - Rental locations are just regular parking lots where the vehicles are available for rental. </P>
+</div>
+<div>
+<P class="article-content">- Picking up and returning vehicles is on a self-serve basis.</P>
+</div>
+<div>
+<P class="article-content">- Registered drivers can rent vehicles by the hour, with the maximum of 72 hours (3 days).</P>
+</div>
+</div>
+</article>
+
+	
+ 
+{% endblock content %}
+
+    
+
+

@@ -1,0 +1,61 @@
+{% extends "layout_user.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block head %}
+        {{ super() }}
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <article class="media content-section">
+         <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#"> <h1> Book your Car!!!! </h1></a>
+			</div>
+			<P class="article-content"> </P>
+		</div>
+	</article>
+
+<div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Booking Details !!!</legend>
+                
+                <div class="form-group">
+                        	<h4><p> Choose your Vehicle:  </p></h4>
+                            <table class="table">
+                                <thead>
+                                    <tr style="color: purple; ">
+                                        <th> Vehicle ID </th>
+                                        <th> Vehicle Name </th>
+                                        <th> Vehicle Location </th>
+                                        <th> Vehicle Seat_capacity </th>
+                                        <th> Vehicle Type </th>
+                                        <th> Book Your Car </th>
+                                    </tr>
+                                </thead> 
+                                <tbody>   
+                                    {% for row in rows %}
+                                    <tr>
+                                        <td>{{ row.vehicle_id }}</a></td>
+                                        <td>{{ row.vehicle_name }}</td>
+                                        <td>{{ row.Location }}</td>
+                                        <td>{{ row.seat_capacity }}</td>
+                                        <td>{{ row.vehicle_type }}</td>
+                                        <td>
+                                            {{ form.submit(class="btn btn-outline-info") }}
+                                        </td>
+                                     {% endfor %}
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                </div>
+             </fieldset>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends "layout_user.html" %}
+{% block content %}
+
+<div class="row">
+         <div class="col-md-12">
+          <div class="content-section">
+              <a class="mr-2" href="#">TeamPrecision</a>
+              
+            
+            <h2><a class="article-title" href="#">Welcome To WanderingWheels !!!!</a></h2>
+            <p class="article-content">Rent your car by paying for a six month Membership plan !!!</p>
+          </div>
+        </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+     <div class="content-section">
+       <div class="list-group">
+           <a href="{{url_for('book_user')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Book Vehicle</h5></a><br>
+         <a href="{{url_for('vehiclereturn')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Vehicle Return</h5></a><br>
+         <a href="{{url_for('cancelbooking')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Cancel Booking</h5></a><br>
+         <a href="{{url_for('terminate_membership')}}" class="list-group-item list-group-item-action flex-column align-items-start"><h5>Terminate Membership</h5></a><br>
+       </div>
+    </div>
+    </div>
+</div>
+
+{% endblock content %}

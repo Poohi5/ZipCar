@@ -1,0 +1,824 @@
+{% extends "layout_admin.html" %}
+{% block content %}
+
+<article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">TeamPrecision</a>
+          </div>
+          
+          {% if showForm == "addVehicle" %}
+
+
+          <div class="content-section">
+            <form method="POST" action="{{url_for('addvehicledetails')}}" novalidate>
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Add Vehicle</legend>
+                    <div class="form-group">
+                        {{ form.vehId.label(class="form-control-label") }}
+                        {% if form.vehId.errors %}
+                            {{ form.vehId(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.vehId.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.vehId(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>                                
+                
+                    <div class="form-group">
+                        {{ form.vehName.label(class="form-control-label") }}
+                        {% if form.vehName.errors %}
+                            {{ form.vehName(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.vehName.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.vehName(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>     
+                    
+                    <div class="form-group">
+                        {{ form.vehCompany.label(class="form-control-label") }}
+                        {% if form.vehCompany.errors %}
+                            {{ form.vehCompany(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.vehCompany.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.vehCompany(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div> 
+
+                    <div class="form-group">
+                        {{ form.vehModel.label(class="form-control-label") }}
+                        {% if form.vehModel.errors %}
+                            {{ form.vehModel(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.vehModel.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.vehModel(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div> 
+
+                    <div class="form-group">
+                        {{ form.vehMileage.label(class="form-control-label") }}
+                        {% if form.vehMileage.errors %}
+                            {{ form.vehMileage(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.vehMileage.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.vehMileage(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div> 
+
+                    <div class="form-group">
+                        {{ form.vehLocation.label(class="form-control-label") }}
+                        {% if form.vehLocation.errors %}
+                            {{ form.vehLocation(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.vehLocation.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.vehLocation(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div> 
+
+                    <div class="form-group">
+                        {{ form.timeLastServiced.label(class="form-control-label") }}
+                        {% if form.timeLastServiced.errors %}
+                            {{ form.timeLastServiced(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.timeLastServiced.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.timeLastServiced(class="form-control form-control-lg datepicker") }}
+                        {% endif %}
+                    </div> 
+
+                    <div class="form-group">
+                        {{ form.registrationTag.label(class="form-control-label") }}
+                        {% if form.registrationTag.errors %}
+                            {{ form.registrationTag(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.registrationTag.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.registrationTag(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div> 
+
+                    <div class="form-group">
+                        {{ form.seatCapacity.label(class="form-control-label") }}
+                        {% if form.seatCapacity.errors %}
+                            {{ form.seatCapacity(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.seatCapacity.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.seatCapacity(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div> 
+
+                    <div class="form-group">
+                        {{ form.vehType.label(class="form-control-label") }}
+                        {% if form.vehType.errors %}
+                            {{ form.vehType(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.vehType.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.vehType(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div> 
+
+                    <div class="form-group">
+                        {{ form.vehCondition.label(class="form-control-label") }}
+                        {% if form.vehCondition.errors %}
+                            {{ form.vehCondition(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.vehCondition.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.vehCondition(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div> 
+
+
+                </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </form>
+        </div>
+
+            {% elif showForm == "getVehicleDetails" %}
+                <div class="content-section">
+                    <form method="POST" action="{{url_for('updatevehicledetails', formid=1)}}" novalidate>
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Get Vehicle Details To Update</legend>
+                            <div class="form-group">
+                                {{ form.vehId.label(class="form-control-label") }}
+                                {% if form.vehId.errors %}
+                                    {{ form.vehId(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.vehId.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.vehId(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>                                
+                        </fieldset>
+                        <div class="form-group">
+                            {{ form.getsubmit(class="btn btn-outline-info") }}
+                        </div>
+                    </form>
+                </div>
+
+            
+            {% elif showForm == "updateVehicleDetails" %}
+            <div class="content-section">
+                <form method="POST" action="{{url_for('updatevehicledetails', formid=2)}}" novalidate>
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Update Vehicle</legend>
+                        <input type="number" name="vehId" value="{{form.vehId.data}}" hidden>
+                        <div class="form-group">
+                            {{ form.vehId.label(class="form-control-label") }}
+                            {% if form.vehId.errors %}
+                                {{ form.vehId(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.vehId.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.vehId(class="form-control form-control-lg", disabled=True) }}
+                            {% endif %}
+                        </div>                                
+                    
+
+                        <div class="form-group">
+                            {{ form.vehName.label(class="form-control-label") }}
+                            {% if form.vehName.errors %}
+                                {{ form.vehName(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.vehName.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.vehName(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>     
+                        
+                        <div class="form-group">
+                            {{ form.vehCompany.label(class="form-control-label") }}
+                            {% if form.vehCompany.errors %}
+                                {{ form.vehCompany(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.vehCompany.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.vehCompany(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+    
+                        <div class="form-group">
+                            {{ form.vehModel.label(class="form-control-label") }}
+                            {% if form.vehModel.errors %}
+                                {{ form.vehModel(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.vehModel.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.vehModel(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+    
+                        <div class="form-group">
+                            {{ form.vehMileage.label(class="form-control-label") }}
+                            {% if form.vehMileage.errors %}
+                                {{ form.vehMileage(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.vehMileage.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.vehMileage(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+    
+                        <div class="form-group">
+                            {{ form.vehLocation.label(class="form-control-label") }}
+                            {% if form.vehLocation.errors %}
+                                {{ form.vehLocation(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.vehLocation.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.vehLocation(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+    
+                        <div class="form-group">
+                            {{ form.timeLastServiced.label(class="form-control-label") }}
+                            {% if form.timeLastServiced.errors %}
+                                {{ form.timeLastServiced(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.timeLastServiced.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.timeLastServiced(class="form-control form-control-lg datepicker") }}
+                            {% endif %}
+                        </div> 
+    
+                        <div class="form-group">
+                            {{ form.registrationTag.label(class="form-control-label") }}
+                            {% if form.registrationTag.errors %}
+                                {{ form.registrationTag(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.registrationTag.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.registrationTag(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+    
+                        <div class="form-group">
+                            {{ form.seatCapacity.label(class="form-control-label") }}
+                            {% if form.seatCapacity.errors %}
+                                {{ form.seatCapacity(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.seatCapacity.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.seatCapacity(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+    
+                        <div class="form-group">
+                            {{ form.vehType.label(class="form-control-label") }}
+                            {% if form.vehType.errors %}
+                                {{ form.vehType(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.vehType.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.vehType(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+    
+                        <div class="form-group">
+                            {{ form.vehCondition.label(class="form-control-label") }}
+                            {% if form.vehCondition.errors %}
+                                {{ form.vehCondition(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.vehCondition.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.vehCondition(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+    
+    
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.updatesubmit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+
+            {% elif showForm == "removeVehicleDetails" %}
+
+              <div class="content-section">
+                    <form method="POST" action="{{url_for('removevehicledetails')}}" novalidate>
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Remove Vehicle</legend>
+                            <div class="form-group">
+                                {{ form.vehId.label(class="form-control-label") }}
+                                {% if form.vehId.errors %}
+                                    {{ form.vehId(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.vehId.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.vehId(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>                                
+                        </fieldset>
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-outline-info") }}
+                        </div>
+                    </form>
+                </div>
+
+
+            {% elif showForm == "getvehicletype" %}
+
+            <div class="content-section">
+                <form method="POST" action="{{url_for('vehicleprice', formid=1)}}" novalidate>
+                    {{ form.hidden_tag() }}
+                    
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Set Price Details</legend>
+                        <div class="form-group">
+                            {{ form.vehicle_type.label(class="form-control-label") }}
+                            {{ form.vehicle_type(class="form-control form-control-lg") }}
+                        </div> 
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+
+            {% elif showForm == "addprice" %}
+
+            <div class="content-section">
+                <form method="POST" action="{{url_for('vehicleprice', formid=2)}}" novalidate>
+                    {{ form.csrf_token }}
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Get Price Details</legend>
+                        <input type="number" name="price_id" value="{{form.price_id.data}}" hidden>
+                        <input type="text" name="vehicle_type" value="{{form.vehicle_type.data}}" hidden></inputtype>
+                        <div class="form-group">                            
+                            {{ form.vehicle_type.label(class="form-control-label") }}
+                            {{ form.vehicle_type(class="form-control form-control-lg", disabled=True) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.price.label(class="form-control-label") }}
+                            {% if form.price.errors %}
+                                {{ form.price(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.price.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.price(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+                        <div class="form-group">
+                            {{ form.FirstDiscount.label(class="form-control-label") }}
+                            {% if form.FirstDiscount.errors %}
+                                {{ form.FirstDiscount(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.FirstDiscount.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.FirstDiscount(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+                        <div class="form-group">
+                            {{ form.SecondDiscount.label(class="form-control-label") }}
+                            {% if form.SecondDiscount.errors %}
+                                {{ form.SecondDiscount(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.SecondDiscount.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.SecondDiscount(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+                        <div class="form-group">
+                            {{ form.ThirdDiscount.label(class="form-control-label") }}
+                            {% if form.ThirdDiscount.errors %}
+                                {{ form.ThirdDiscount(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.ThirdDiscount.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.ThirdDiscount(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+
+            {% elif showForm == "rentalLocation" %}
+
+            <div class="content-section">
+                <form method="POST" action="{{url_for('rentallocation')}}" novalidate>
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Add Rental Location</legend>
+                        <div class="form-group">
+                            {{ form.locationId.label(class="form-control-label") }}
+                            {% if form.locationId.errors %}
+                                {{ form.locationId(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.locationId.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.locationId(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>    
+                        
+                        <div class="form-group">
+                            {{ form.name.label(class="form-control-label") }}
+                            {% if form.name.errors %}
+                                {{ form.name(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.name(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>  
+
+                        <div class="form-group">
+                            {{ form.address.label(class="form-control-label") }}
+                            {% if form.address.errors %}
+                                {{ form.address(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.address.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.address(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>  
+
+                        <div class="form-group">
+                            {{ form.totalcapacity.label(class="form-control-label") }}
+                            {% if form.totalcapacity.errors %}
+                                {{ form.totalcapacity(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.totalcapacity.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.totalcapacity(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+            {% elif showForm == "editrentalLocation" %}
+
+            <div class="content-section">
+                <form method="POST" action="{{url_for('editrentallocation', formid=1)}}" novalidate>
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Get Location Details</legend>
+                        <div class="form-group">
+                            {{ form.locationId.label(class="form-control-label") }}
+                            {% if form.locationId.errors %}
+                                {{ form.locationId(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.locationId.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.locationId(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>                                
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+            {% elif showForm == "updaterentallocation" %}
+            <div class="content-section">
+                <form method="POST" action="{{url_for('editrentallocation', formid=2)}}" novalidate>
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Update Rental Location</legend>
+                        <div class="form-group">
+                            <input type="number" name="locationId" value={{form.locationId.data}} hidden>
+                            {{ form.locationId.label(class="form-control-label") }}
+                            {% if form.locationId.errors %}
+                                {{ form.locationId(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.locationId.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.locationId(class="form-control form-control-lg", disabled=True) }}
+                            {% endif %}
+                        </div>    
+                        
+                        <div class="form-group">
+                            {{ form.name.label(class="form-control-label") }}
+                            {% if form.name.errors %}
+                                {{ form.name(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.name(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>  
+
+                        <div class="form-group">
+                            {{ form.address.label(class="form-control-label") }}
+                            {% if form.address.errors %}
+                                {{ form.address(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.address.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.address(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>  
+
+                        <div class="form-group">
+                            {{ form.totalcapacity.label(class="form-control-label") }}
+                            {% if form.totalcapacity.errors %}
+                                {{ form.totalcapacity(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.totalcapacity.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.totalcapacity(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div> 
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+
+            {% elif showForm == "getrentalLocationtoremove" %}
+
+            <div class="content-section">
+                <form method="POST" action="{{url_for('removerentallocation', formid=1)}}" novalidate>
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Get Location Details</legend>
+                        <div class="form-group">
+                            {{ form.locationId.label(class="form-control-label") }}
+                            {% if form.locationId.errors %}
+                                {{ form.locationId(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.locationId.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.locationId(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>                                
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+
+            {% elif showForm == "removerentallocation" %}
+            <div class="content-section">
+                <form method="POST" action="{{url_for('removerentallocation', formid=2)}}" novalidate>
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Update Rental Location</legend>
+                        <div class="form-group">
+                            <input type="number" name="locationId" value={{form.locationId.data}} hidden>
+                            {{ form.locationId.label(class="form-control-label") }}
+                            {% if form.locationId.errors %}
+                                {{ form.locationId(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.locationId.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.locationId(class="form-control form-control-lg", disabled=True) }}
+                            {% endif %}
+                        </div>    
+                        
+                        <div class="form-group">
+                            {{ form.name.label(class="form-control-label") }}
+                            {% if form.name.errors %}
+                                {{ form.name(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.name(class="form-control form-control-lg", disabled=True) }}
+                            {% endif %}
+                        </div>  
+
+                        <div class="form-group">
+                            {{ form.address.label(class="form-control-label") }}
+                            {% if form.address.errors %}
+                                {{ form.address(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.address.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.address(class="form-control form-control-lg", disabled=True) }}
+                            {% endif %}
+                        </div>  
+
+                        <div class="form-group">
+                            {{ form.totalcapacity.label(class="form-control-label") }}
+                            {% if form.totalcapacity.errors %}
+                                {{ form.totalcapacity(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.totalcapacity.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.totalcapacity(class="form-control form-control-lg", disabled=True) }}
+                            {% endif %}
+                        </div> 
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+            {% elif showForm == "deleteuser" %}
+            <div class="content-section">
+                                    <legend class="border-bottom mb-4">Remove User</legend>
+                                        {% if not userList %}
+                            NO USER DETAILS AVAILABLE
+                        {% else %}
+                            {% for value in userList %}
+                <form method="POST" action="{{url_for('deleteuseraction')}}">
+                    <fieldset class="form-group">
+                                <input type="text" name="userName" value={{value.username}}  hidden>
+                                <div class="form-group">
+                                    <span class="form-control-label">
+                                        User ID:
+                                    </span> 
+                                    <span class="form-control form-control-sm">
+                                        {{value.id}} 
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-control-label">
+                                        Username:
+                                    </span> 
+                                    <span class="form-control form-control-sm">
+                                        {{value.username}}
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-control-label">
+                                        First name: 
+                                    </span> 
+                                    <span class="form-control form-control-sm">
+                                        {{value.fname}}
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-control-label">
+                                        Last name:
+                                    </span> 
+                                    <span class="form-control form-control-sm">
+                                        {{value.lname}}
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-control-label">
+                                        Email: 
+                                    </span> 
+                                    <span class="form-control form-control-sm">
+                                        {{value.email}}
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-control-label">
+                                        Address:
+                                    </span> 
+                                    <span class="form-control form-control-sm">
+                                        {{value.address}}
+                                    </span>
+                                </div>
+                                <div class="form-group  btn btn-outline-info">
+                                    <input type="submit" value="Remove User">
+                                </div>
+                    </fieldset>
+                </form>
+                {%endfor%}
+                                        {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </article>
+{% endblock content %}

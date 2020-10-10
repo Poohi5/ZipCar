@@ -1,0 +1,63 @@
+{% extends "layout_user.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block head %}
+       {{ super() }}
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% endblock %}
+{% block content %}
+    <article class="media content-section">
+         <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#"> <h1> Cancel Booking!!!! </h1></a>
+			</div>
+			<P class="article-content"> Customer can cancel your booking before specified time</P>
+		</div>
+	</article>
+    <legend class="border-bottom mb-4">Returning Details</legend>
+    <div class="content-section">
+                        <h4><p> Your Bookings:  </p></h4>
+                    <table class="table">
+                        <thead>
+                            <tr style="color:purple">
+                                <th>Booking ID  </th>
+                                <th>Pick Up Date time </th>
+                                <th>Drop Off Date time </th>
+                                <th>Pick Up Location </th>
+                                <th>Vehicle ID  </th>
+                                <th>Price </th>
+                             </tr>
+                        </thead>
+        {% for result in results %}
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                
+                <div class="form-group">
+                        <tbody>
+                            <tr>
+                                <input id="booking_id" name="booking_id" type="text" value="{{ result[0].booking_id }} " hidden>
+                                <td> {{ result[0].booking_id }} </td>
+                                <td> {{ result[0].pickupdatetime }} </td>
+                                <td> {{ result[0].dropoffdatetime }}</td>
+                                <td> {{ result[1] }}</td>
+                                <td> {{ result[0].vehicle_id }}</td>
+                                <td> {{ result[0].price }}</td>
+                                <td>
+                                    
+                                        {{ form.submit(class="btn btn-outline-info") }}
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+
+                </div>      
+             </fieldset>
+        </form>
+        {% endfor %}
+                     </table>
+    </div>
+{% endblock content %}
